@@ -18,17 +18,48 @@ var programs = [
 		["exJi4m7oZwU","va1XZbkCOBA","ChzKZtIbcdM","f9-agcr9Wrk","waViZBJL6Xw","RXvhBi33Vqk","lyRsI8mF0Sg","bw-6w82eB8o"]
 	],
 	["Whitley's Guide", "IAE 2950",
-		["N9OAuViakOc","o2FNBi90l9Q","QOu7IPArxX0","PfB228kYlhI"]
+		["N9OAuViakOc","o2FNBi90l9Q","QOu7IPArxX0","PfB228kYlhI","6zblVvZxoVs"]
 	],
 	["Voyager Direct", "Galactic Tour",
 		["OMGs63MsSBI","3FSFjR0p4Z8","2eKotGpwjbE","IxJj-Tkp8P4","6aeRYrT8Zso","YYeBhPvhybk","4vE6wrgZ3vw","tYQCtaP54qQ","_WTvS6nSSvQ"]
 	],
 	["Galactic Gear", "Origin M50 Review",
 		["_SpsjUHj_II"]
+	],
+	["AstroPub & Paul Shelley", "The Jumptown Wars",
+		["3V7GFDI7KqE","LILX8w5wBg8"]
+	],
+	["Imperial Geographic", "Daymar Rally 2950",
+		["3a3a9IJlbfU"]
+	],
+	["CitizenCon 2947", "CNOU Pioneer Presentation",
+		["olxI7X7eac8"]
+	],
+	["Hardspace", "Episode 1",
+		["Oun780wv7k0"]
+	],
+	["Hardspace", "Episode 2",
+		["9IRDUR3ptzI"]
+	],
+	["Hardspace", "Episode 3",
+		["Q0QOkyY8QYY"]
+	],
+	["Hardspace", "Episode 4",
+		["4-rNwpRr43I"]
+	],
+	["Hardspace", "Episode 5",
+		["4GU8cvXBrEk"]
+	],
+	["Hardspace", "Episode 6",
+		["Xl9Oi_Tm8ds"]
+	],
+	["Hardspace", "Episode 7",
+		["Ta445VjpaTs"]
 	]
 ]
 
-var programHistory = Array(3);
+
+var programHistory = Array(parseInt(programs.length / 1.5));
 
 function chooseNewProgram() {
 
