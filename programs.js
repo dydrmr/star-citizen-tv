@@ -20,6 +20,9 @@ var programs = [
 	["Whitley's Guide", "IAE 2950",
 		["N9OAuViakOc","o2FNBi90l9Q","QOu7IPArxX0","PfB228kYlhI","6zblVvZxoVs"]
 	],
+	["Whitley's Guide", "IAE 2951",
+		["91FuH77lPzk","hUqhFlcol70","U2Jl5WnoVpA","WOFwUsmEZ4E","ni-Xj71Zmuo"]
+	],
 	["Voyager Direct", "Galactic Tour",
 		["OMGs63MsSBI","3FSFjR0p4Z8","2eKotGpwjbE","IxJj-Tkp8P4","6aeRYrT8Zso","YYeBhPvhybk","4vE6wrgZ3vw","tYQCtaP54qQ","_WTvS6nSSvQ"]
 	],
