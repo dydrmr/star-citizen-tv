@@ -58,6 +58,28 @@ var programs = [
 	],
 	["Hardspace", "Episode 7",
 		["Ta445VjpaTs"]
+	],
+	[
+	["Feature Film", "The Reunion",
+	 	["zPJA54sWAec"]
+	],
+	["Galactic Geographic", "Microtech Neural Link",
+	 	["Aki0qnMj3Ho"]
+	],
+	["BWC Nocturne", "Episode 1",
+	 	["oy_HYrhMpRc"]
+	],
+	["BWC Nocturne", "Episode 2",
+	 	["VzpRo-If95M"]
+	],
+	["BWC Nocturne", "Episode 3",
+	 	["g17pqH3PCko"]
+	],
+	["BWC Nocturne", "Episode 4",
+	 	["5RpAPvjzEqc"]
+	],
+	["BWC Nocturne", "Episode 5",
+	 	["LrH8Jxj1t9Y"]
 	]
 ]
 
