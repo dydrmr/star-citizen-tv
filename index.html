@@ -1,162 +1,95 @@
-<!DOCTYPE html>
-<html>
-  <body onload="getStarted()">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SCTV</title>
 
-  	<style type="text/css">
-  		* {
-  			margin: 0;
-  			padding: 0;
-  		}	
-  		body {
-  			background-color: black;
-  		}
-  	</style>
+    <script type="text/javascript" src="programs.js"></script>
+    <script type="text/javascript" src="programController.js"></script>
+    <script type="text/javascript" src="commercials.js"></script>
+    <script type="text/javascript" src="commercialController.js"></script>
+    <script type="text/javascript" src="keyboard.js"></script>
+    <script type="text/javascript" src="main.js" defer></script>
+</head>
 
-	<div id="player"></div>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing:border-box;
+    }
+    body {
+        width: 100svw;
+        height: 100svh;
+        overflow: hidden;
+        background-color: black;
+    }
 
+    #player {
+        background-color: gray;
+        width: 100svw;
+        height: 100svh;
+        pointer-events: none;
+        user-select: none;
+    }
 
-	<script type="text/javascript" src="commercials.js"></script>
-	<script type="text/javascript" src="programs.js"></script>
+    #program-info {
+        z-index: 10;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100svw;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
 
-	<script>
-		// 2. This code loads the IFrame Player API code asynchronously.
-	  	var tag = document.createElement('script');
+        padding: 5px;
 
-		tag.src = "https://www.youtube.com/iframe_api";
-		var firstScriptTag = document.getElementsByTagName('script')[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        font-family: sans-serif;
+        font-size: 20px;
+        font-weight: bold;
 
-		// 3. This function creates an <iframe> (and YouTube player)
-		//    after the API code downloads.
-		var player;
-		function onYouTubeIframeAPIReady() {
-			player = new YT.Player('player', {
-				height: Math.floor(window.innerHeight / 1.5),
-				width: Math.floor(window.innerWidth / 1.5),
-				videoId: '',
-				events: {
-					'onReady': onPlayerReady,
-					'onStateChange': onPlayerStateChange
-				}
-			});
-		}
+        transition: 0.4s ease-in-out;
+        transform: translateY(0px);
+    }
 
-		player.setSize(window.innerWidth, window.innerHeight);
+    #program-info[data-show="false"] {
+        transform: translateY(100px);
+    }
 
-		// 4. The API will call this function when the video player is ready.
-		function onPlayerReady(event) {
-			event.target.playVideo();
-		}
+    #ad-tag {
+        z-index: 10;
+        position: absolute;
+        top: 0px;
+        right: 0px;
 
-		// 5. The API calls this function when the player's state changes.
-		//    The function indicates that when playing a video (state=1),
-		//    the player should play for six seconds and then stop.
-		var done = false;
-		function onPlayerStateChange(event) {
-			// if (event.data == YT.PlayerState.PLAYING && !done) {
-				// setTimeout(stopVideo, 6000);
-				// done = true;
-			// }
+        margin: 20px;
+        padding: 6px 10px;
+        border-radius: 16px;
+        color: white;
+        background-color: goldenrod;
+        font-family: sans-serif;
+        font-size: 15px;
+        font-weight: bold;
 
-			if (event.data == YT.PlayerState.ENDED) {
-				startNextVideo();
-			}
-		}
-		function stopVideo() {
-			player.stopVideo();
-		}
-	</script>
+        transition: 0.4s ease-in-out;
+        opacity: 1;
+    }
+    #ad-tag[data-show="false"] {
+        opacity: 0;
+    }
+</style>
 
-	<script type="text/javascript">
-		function testFunction() {
-			let id = chooseNewCommercial();
-			player.loadVideoById(id);
-		}
-	</script>
+<body>
 
+    <div id="player"></div>
 
-	<!-- MAIN SCRIPT -->
+    <div id="program-info" data-show="true">
+        <p id="program-title"></p>
+        <p id="program-subtitle"></p>
+        <p id="program-genre"></p>
+        <p id="program-duration"></p>
+        <p id="program-remaining"></p>
+    </div>
 
-	<script type="text/javascript">
-		var phase = null;
-		var commercialCache = Array();
-		var programCache = Array();
+    <div id="ad-tag" data-show="false">Advertisement</div>
 
-		var lastVideoType = null;
-
-		function getStarted() {
-			let choice = Math.floor(Math.random() * 2);
-			
-			if (choice > 0) {
-				// Start with commercial
-				let result = chooseNewCommercial();
-				commercialCache.push(result);
-				phase = "commercials";
-
-			} else {
-				// Start with program
-				let result = chooseNewProgram();
-				programCache = result[2];
-				phase = "program";
-			}
-
-			startNextVideo();
-		}
-
-		function startNextVideo() {
-
-			if (phase == "commercials") {
-
-				if (commercialCache.length > 0) {
-					player.loadVideoById(commercialCache[0]);
-					commercialCache.shift();
-					lastVideoType = "commercial";
-
-				} else {
-					// no more commercials to play
-					let result = chooseNewProgram();
-					programCache = result[2];
-					phase = "program";
-					player.loadVideoById(programCache[0]);
-					programCache.shift();
-					lastVideoType = "program";
-				}
-
-
-			} else {
-
-				if (programCache.length > 0) {
-
-					if (lastVideoType == "program") {
-						// force 1-ad commercial break after each program segment
-						player.loadVideoById(chooseNewCommercial());
-						lastVideoType = "commercial";
-					
-					} else {
-						player.loadVideoById(programCache[0]);
-						programCache.shift();
-						lastVideoType = "program";
-					}
-
-				} else {
-					// no more program segments to play
-					prepareCommercialBreak();
-					phase = "commercials";
-					player.loadVideoById(commercialCache[0]);
-					commercialCache.shift();
-					lastVideoType = "commercial";
-				}
-			}
-
-			function prepareCommercialBreak() {
-				let numOfAds = Math.floor(Math.random() * 2) + 1;
-
-				for (let i = 1; i <= numOfAds; i++) {
-					let result = chooseNewCommercial();
-					commercialCache.push(result);
-				}
-			}
-		}
-	</script>
-  </body>
+</body>
 </html>

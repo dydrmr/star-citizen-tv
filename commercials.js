@@ -67,36 +67,8 @@ var commercials = [
 	["jyOOhMK24Lk", "Invictus 2951", "Join the Fleet", 1],
 	["sK52v7NF-CA", "UEE", "Militia Mobilization Initiative", 1],
 	["Xs-LnkFr4PE", "Hardspace", "Promo", 0],
-	["IQ36gbK0Sys", "Red Festival", "2951", 0]
+	["IQ36gbK0Sys", "Red Festival", "2951", 0],
+	['HQj4J8zWsPw', 'Galactic Geographic', 'Promo', 0],
+	['i7Z4RWPorhA', 'Hurston Dynamics', 'Infomercial', 1],
+	['ujcwbYqKuow', 'microTech', 'Infomercial', 1]
 ]
-
-var commercialHistory = Array(parseInt(commercials.length / 1.5));
-
-function chooseNewCommercial() {
-
-	let rnd;
-
-	let tryAgain = true;
-	let loopSafetyValve = 0;
-
-	while (tryAgain && loopSafetyValve < 50) {
-		loopSafetyValve++;
-		
-		rnd = Math.floor(Math.random() * commercials.length);
-
-		let trigger = false;
-		for (let i = 0; i < commercialHistory.length; i++) {
-			if (commercialHistory[i] == parseInt(rnd)) {
-				trigger = true;
-			}
-		}
-
-		if (!trigger) { tryAgain = false; }
-	}
-
-	let ytid = commercials[rnd][0];
-	commercialHistory.splice(0, 1);
-	commercialHistory.push(parseInt(rnd));
-
-	return ytid;
-}
