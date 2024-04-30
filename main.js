@@ -15,10 +15,11 @@ function onYouTubeIframeAPIReady() {
             'playsinline': 1,
             'controls': 0,
             'disablekb': 1,
-            'modestbranding': 1,
+            //'modestbranding': 1,
             'showinfo': 0,
             'autohide': 1,
-            'cc_load_policy': 0
+            'cc_load_policy': 0,
+            'iv_load_policy': 3
         },
         events: {
             'onReady': onPlayerReady,
@@ -32,29 +33,27 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
-    //console.log('Player state changed', event);
-
     if (event.data === YT.PlayerState.ENDED) {
-        // handle new video selection
-        console.log('Video ended');
         chooseNextAction();
-    } else if (event.data === YT.PlayerState.PLAYING) {
-        // handle
-    } else if (event.data === YT.PlayerState.PAUSED) {
-        // handle
-    } else if (event.data === YT.PlayerState.BUFFERING) {
-        // handle
+    //} else if (event.data === YT.PlayerState.PLAYING) {
+        
+    //} else if (event.data === YT.PlayerState.PAUSED) {
+
+    //} else if (event.data === YT.PlayerState.BUFFERING) {
+
     }
 }
 
-function stopVideo() {
-    player.stopVideo();
-}
 
+
+
+let programs = null;
+loadData();
 
 const videoQueue = Array();
 function addToVideoQueue(programData) {
-    for (const videoId of programData[2]) {
+    const array = programData.ids.split(' ');
+    for (const videoId of array) {
         videoQueue.push(videoId);
     }
 }
@@ -62,11 +61,13 @@ function chooseNextAction() {
     if (commercialCount === 0) {
         if (Math.random() < 0.8) {
             playCommercial();
+            hideYoutubeUI();
             return;
         }
 
     } else if (commercialCount < 3 && Math.random() < 0.5) {
         playCommercial();
+        hideYoutubeUI();
         return;
     }
 
@@ -76,8 +77,9 @@ function chooseNextAction() {
         chooseNewProgram();
     }
 
-    populateProgramInfo(currentProgram[0], currentProgram[1]);
-    document.getElementById('ad-tag').dataset.show = 'false';
+    hideYoutubeUI();
+    populateProgramInfo(currentProgram.show, currentProgram.title);
+    showElement('ad-tag', false);
     commercialCount = 0;
 }
 
@@ -87,28 +89,26 @@ function populateProgramInfo(title, subtitle) {
 }
 
 document.getElementById('power-button').addEventListener('click', () => {
-    player.setVolume(100);
+    //player.setVolume(100);
     chooseNextAction();
-    document.getElementById('power-off-screen').dataset.show = false;
+    showElement('power-off-screen', false);
 })
+
 
 setInterval(updateDuration, 500);
 function updateDuration() {
-    if (document.getElementById('power-off-screen').dataset.show === 'true') return;
+    if (isVisible('power-off-screen')) return;
 
-    if (document.getElementById('ad-tag').dataset.show === 'true') {
-        document.getElementById('program-info-right').style.display = 'none';
+    if (isVisible('ad-tag')) {
+        showElement('program-info-right', false);
         return;
     }
 
-    //const duration = convertSecondsToTime(player.getDuration());
-    //document.getElementById('program-duration').innerText = duration;
-
     const remaining = convertSecondsToTime(player.getDuration() - player.getCurrentTime());
     document.getElementById('program-remaining').innerText = remaining;
-
-    document.getElementById('program-info-right').style.display = 'block';
+    showElement('program-info-right');
 }
+
 
 function convertSecondsToTime(totalSeconds) {
     let minutes = Math.floor(totalSeconds / 60);
@@ -120,9 +120,36 @@ function convertSecondsToTime(totalSeconds) {
         return '';
     }
 
-    if (minutes === 'NaN' || seconds === 'NaN') {
+    if (`${minutes}:${seconds}` === 'NaN:NaN') {
         return '';
     }
 
     return `${minutes}:${seconds}`;
+}
+
+function showElement(elementId, state = true) {
+    document.getElementById(elementId).dataset.show = state;
+}
+
+function isVisible(elementId) {
+    if (document.getElementById(elementId).dataset.show === 'true') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+function hideYoutubeUI() {
+    //hideYTElement('ytp-show-cards-title');
+    //hideYTElement('ytp-watermark');
+}
+
+function hideYTElement(className) {
+    const iframe = document.getElementById('player');
+    const collection = iframe.contentWindow.document.getElementsByClassName(className);
+    console.log(collection);
+    for (const el of collection) {
+        el.style.display - 'none !important';
+    }
 }

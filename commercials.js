@@ -95,5 +95,12 @@
 	['v45vRuYbdU4', 'Overclocked', 'Trailer', 1],
 	['sjgoPP7A6JA', 'Kel-To', 'Constores', 1],
 	['4jhgFLAI8AA', 'RIFT', 'Teaser', 1],
-	['AY1mn3UWa5U', 'Adrift', 'Trailer', 1]
+	['AY1mn3UWa5U', 'Adrift', 'Trailer', 1],
+	['jrwTIJMWsTc', 'IAE 2951', 'Promo', 1],
+	['6Wl2Ew4tsfg', 'HubFeed', 'Social videos and networking', 0],
+	['Uc5ONVR2hBo', 'HubWire Express', 'Fleet Week Live Coverage', 0],
+	['rH_fmiPWyXw', 'HubWire Express', 'Launch Week Live Coverage', 0],
+	['62eFtZf3lRs', 'Beacon Banu', 'Trailer', 1],
+	['nmK72YCNYg8', 'The Verse View', 'Teaser', 0],
+	['6zJcS-8ZR0s', 'Lucky 13', 'Trailer', 0]
 ]

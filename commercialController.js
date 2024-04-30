@@ -13,11 +13,12 @@ function playCommercial() {
 
 	const index = Math.floor(Math.random() * eligible.length);
 	const data = eligible[index];
-	console.log('Chosen commercial', data);
+	//console.log('Chosen commercial', data);
 	updateCommercialHistory(data);
 
 	populateProgramInfo('Commercial Break', `${data[1]} ${data[2]}`);
-	document.getElementById('ad-tag').dataset.show = 'true';
+	//document.getElementById('ad-tag').dataset.show = 'true';
+	showElement('ad-tag');
 
 	commercialCount++;
 	const videoId = data[0];

@@ -19,6 +19,10 @@ body {
     user-select: none;
 }
 
+.ytp-show-cards-title {
+    display: none !important;
+}
+
 #power-off-screen {
     z-index: 50;
     background-color: black;
@@ -27,18 +31,14 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-
     user-select: none;
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     font-family: sans-serif;
     text-align: center;
     color: white;
-
     transition: 0.4s ease-in-out;
     opacity: 1;
 }
@@ -114,6 +114,13 @@ body {
     font-size: 16px;
     font-weight: bold;
 }
+
+#program-info-right {
+    opacity: 1;
+}
+    #program-info-right[data-show="false"] {
+        opacity: 0;
+    }
 
 #program-remaining {
     font-weight: bold;
