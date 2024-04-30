@@ -24,6 +24,15 @@ function chooseNewProgram() {
 
 	//console.log('Chosen program', data);
 
+	// FORCE SPECIFIC PROGRAM
+	//const data = programs.filter((program) => {
+	//	if (program.show === 'Mahlli\'s Diary') {
+	//		return true;
+	//	}
+	//})[0];
+
+	console.log(data);
+
 	updateProgramHistory(data);
 	addToVideoQueue(data);
 	currentProgram = data;
