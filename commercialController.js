@@ -1,4 +1,4 @@
-const commercialHistory = Array(30).fill(null);
+const commercialHistory = Array(60).fill(null);
 let commercialCount = 0;
 
 function updateCommercialHistory(commercialData) {
@@ -16,7 +16,8 @@ function playCommercial() {
 	console.log('Chosen commercial', data);
 	updateCommercialHistory(data);
 
-	populateProgramInfo('Commercial', `${data[1]} ${data[2]}`);
+	populateProgramInfo('Commercial Break', `${data[1]} ${data[2]}`);
+	document.getElementById('ad-tag').dataset.show = 'true';
 
 	commercialCount++;
 	const videoId = data[0];

@@ -1,34 +1,36 @@
-window.addEventListener('keypress', (event) => {
-    //console.log(event.key);
+window.addEventListener('keyup', (event) => {
 
     if (event.key === 'Enter') {
         chooseNextAction();
-    }
 
-    if (event.key === ' ') {
-        console.log('Play/Pause');
 
+    } else if (event.key === ' ') {
         const state = player.getPlayerState();
 
         if (state === 1) {
             player.pauseVideo();
+            document.getElementById('pause-overlay').dataset.show = true;
         } else {
             player.playVideo();
+            document.getElementById('pause-overlay').dataset.show = false;
         }
-    }
 
-    if (event.key === 'i') {
-        //toggle program info overlay
+
+    } else if (event.key === 'ArrowRight') {
+        player.seekTo(player.getCurrentTime() + 5);
+
+
+    } else if (event.key === 'ArrowLeft') {
+        player.seekTo(player.getCurrentTime() - 5);
+
+
+    } else if (event.key === 'i') {
         const state = document.getElementById('program-info').dataset.show;
-
-        let newState = null;
-
-        if (state === 'true') {
-            newState = false;
-        } else {
-            newState = true;
-        }
-
+        let newState = (state === 'true') ? false : true;
         document.getElementById('program-info').dataset.show = newState;
+
+
+    } else {
+        console.log(event.key);
     }
 });

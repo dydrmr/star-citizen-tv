@@ -1,4 +1,4 @@
-const programHistory = Array(15).fill(null);
+const programHistory = Array(50).fill(null);
 let currentProgram = null;
 
 function updateProgramHistory(programData) {
