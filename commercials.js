@@ -102,5 +102,7 @@
 	['rH_fmiPWyXw', 'HubWire Express', 'Launch Week Live Coverage', 0],
 	['62eFtZf3lRs', 'Beacon Banu', 'Trailer', 1],
 	['nmK72YCNYg8', 'The Verse View', 'Teaser', 0],
-	['6zJcS-8ZR0s', 'Lucky 13', 'Trailer', 0]
+	['6zJcS-8ZR0s', 'Lucky 13', 'Trailer', 0],
+	['DBqPqLCJTvw', 'Visit Orison', 'Promotion', 0],
+	['X4lisFQjx0M', 'Crusader Industries Invites You To Discover Orison', 1]
 ]
