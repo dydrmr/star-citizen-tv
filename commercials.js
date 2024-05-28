@@ -62,6 +62,7 @@
 	["I-PzFDiFbhg", "RSI", "Mantis Ad Contest 3", 1],
 	["jH-CL-ksQsk", "RSI", "Scorpius", 0],
 	["cNRhBR8mSQI", "RSI", "Scorpius Antares", 1],
+	['_pBehf-UKMk', 'RSI', 'Ursa Medivac', 1],
 	["nSe4CpaokZk", "Tumbril", "Cyclone Ad Contest 1", 1],
 	["XLrX3UJDDz4", "Tumbril", "Cyclone Ad Contest 2", 1],
 	["FrzHfVx8c0g", "Tumbril", "Cyclone Ad Contest 3", 1],
@@ -84,6 +85,8 @@
 	["ZJo9XDYUZRo", "Invictus 2952", "Teaser", 0],
 	["6E8zpJN0Z4Q", "Invictus 2953", "One Empire", 1],
 	["65CI48r9RcM", "Invictus 2953", "Teaser", 0],
+	['D_yinEGaM5o', 'Invictus 2954', 'Save the Date', 0],
+	['ORSKutu6Uy0', 'Stella Fortuna 2954', 'Feeling Lucky?', 1],
 	["sK52v7NF-CA", "UEE", "Militia Mobilization Initiative", 1],
 	["Xs-LnkFr4PE", "Hardspace", "Promo", 0],
 	["IQ36gbK0Sys", "Red Festival", "2951", 0],
@@ -104,5 +107,7 @@
 	['nmK72YCNYg8', 'The Verse View', 'Teaser', 0],
 	['6zJcS-8ZR0s', 'Lucky 13', 'Trailer', 0],
 	['DBqPqLCJTvw', 'Visit Orison', 'Promotion', 0],
-	['X4lisFQjx0M', 'Crusader Industries Invites You To Discover Orison', 1]
+	['X4lisFQjx0M', 'Crusader Industries Invites You To Discover Orison', 1],
+	['AjY9-s6v5eM', 'MISC', 'R.A.P.T.O.R.'],
+	['tyiTOAqHoCA', 'Anvil', 'Hornet F7 MkII - Rise Above']
 ]
